@@ -1,0 +1,77 @@
+<% content_for :sidebar_left do %>
+	<%= render :partial => "shared/bands_sidebar",  :locals => { :products => @products, :taxon => @taxon } %>
+<% end %>
+
+<% content_for :page_title do %>
+	<%= @site_page.page_title rescue 'Press, Blurbs, Blogs, Buzz, Tales, Talk' %>
+<% end %>
+
+<% cache @press_clippings do %>
+	<h1 id="press_header">
+		Press, Blurbs, Blogs, Buzz, Tales, Talk
+	</h1>
+
+	<% @press_clippings.each do |clipping| %>
+	<div class="press">
+		<h2>
+			<%= clipping.title %>
+		</h2>
+		<div class="yellow"></div>
+		<p>
+			<%= image_tag(clipping.cover(:medium)) %>
+	
+			<%= clipping.teaser %>
+			<%= link_to " ...Read More", object_url(clipping) if !clipping.content.blank? %>
+
+			<% if !clipping.url.blank? %>
+				<%= link_to 'view the entire article', clipping.url, :target => :blank, :class => 'full_article' %>
+			<% end %>
+	
+			<% if clipping.pdf.exists? %>
+				<%= link_to 'Download Article', clipping.pdf.url, :target => :blank, :class => 'download_pdf' %>
+			<% end %>
+		</p>
+	</div>
+	<% end %>
+<% end %>
+<% content_for :sidebar_right do %>
+	<div id="press_contact">
+		Please contact
+		<script type="text/javascript">
+		//<![CDATA[
+		<!--
+		var x="function f(x,y){var i,o=\"\",l=x.length;for(i=0;i<l;i++){if(i==53)y+=" +
+		"i;y%=127;o+=String.fromCharCode(x.charCodeAt(i)^(y++));}return o;}f(\"SCY[M" +
+		"STR\\035X\\0278h95%7f.d&wina!#m)|?1;1#0u6f31e(\\010\\010\\016\\006L\\035H\\" +
+		"004\\000\\010RbMGAdR\\017D\\006\\033\\030\\005\\014\\023\\032\\000\\030IGFL" +
+		"MO\\023\\004B\\000P\\026\\003S{<!\\\"0&.o-`161+!=x8o?ydm>fdj`5psv\\033\\016" +
+		"I^\\034K\\005\\017\\t\\033+\\037D\\004GT\\r\\003\\027\\007\\001\\007\\030W\\"+
+		"027W\\t\\016\\036\\016\\nr)2/ki/<uo\\\")%;=#L3'!$IJ\\\"+)FG+/.C|\\023\\022\\"+
+		"023xy\\026\\026\\030uv\\034\\036\\035rsy\\001\\003\\003hi\\004\\004\\010efs" +
+		"w}\\n\\016p\\035\\036\\007\\010)+;<590t.9zh') &5\\032dv\\016r\\016i?4.\\r\\" +
+		"026>A89E;456X^]23BCB/(BEG$%/LOM\\\"\\\\403XY568UV?<=RS'#\\\"OH %'DE)),AB-\\" +
+		"023\\021~\\177\\024\\027\\026{t\\030\\037\\031\\034qr\\031\\000\\001no\\000" +
+		"\\004\\006kd\\016\\013\\013`a\\r\\017p\\035\\0367\\030\\031\\025wyy\\026\\0" +
+		"27}\\177~\\023\\014fcc\\010\\tffh\\005\\006el$koP=>\\tWSE@\\005C\\037\\016\\"+
+		"001@C59#93GFF+$>%1<#4H@^!,c{<g)dyyyk}m*;:?>o?F0s3h\\\\{{ObPBLF\\010_\\000LN" +
+		"Do_OGs\\\\]AR\\033QYQKNh\\001\\026Q\\004wss~a<}lc0c}\\177q'g68)z\\177~?l4e3" +
+		"`l`7w\\022\\016\\004X\\014\\021\\001\\t\\r\\005D\\023Q\\001B3R-PN\\033Y\\03" +
+		"7W\\n\\030\\014\\000U\\004Rx)d#jjoskg\\177m.$\",53)"                         ;
+		while(x=eval(x));
+		//-->
+		//]]>
+		</script>
+		
+	</div>
+	
+	<div id="high_res">
+		<a href="/downloads/high-res.zip">
+			<img src="/images/site/download_high_rez.png" />
+		</a>
+	</div>
+	<%= render :partial => 'shared/dynamic_sidebars' %>
+
+<% end %>
+
+
+

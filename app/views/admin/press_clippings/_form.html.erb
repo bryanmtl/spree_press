@@ -1,0 +1,51 @@
+<% content_for :head do %>
+
+	<%= javascript_include_tag 'jquery/jquery.js' %>
+	<%= javascript_include_tag 'wymeditor/jquery.wymeditor.pack.js' %>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		var $j = jQuery.noConflict();
+		$j(function() {
+			$j('.wymeditor').wymeditor({
+		        xhtmlParser: 'xhtml_parser.js',
+		        cssParser:   'wym_css_parser.js'
+		    });
+		});
+		
+	</script>
+<% end %>
+
+
+<table class="admin-report" width="545">
+  <tr>
+    <td valign="top">Title:</td>
+    <td><%= f.text_field :title, { "style" => "width:500px;" } %></td>
+  </tr>
+
+	<tr>
+    <td valign="top">Teaser:</td>
+    <td><%= f.text_area :teaser, { "style" => "width:500px;" } %></td>
+  </tr>
+	
+  <tr>
+    <td valign="top">Content:</td>
+    <td><%= f.text_area :content, { "style" => "width:500px;" } %></td>
+  </tr>
+	<tr>
+    <td valign="top">URL:</td>
+    <td><%= f.text_field :url, { "style" => "width:500px;" } %></td>
+  </tr>
+
+	<tr>
+    <td valign="top">Cover Image:</td>
+    <td><%= f.file_field :cover %> </td>
+  </tr>
+	
+	<tr>
+    <td valign="top">PDF:</td>
+    <td><%= f.file_field :pdf %> </td>
+  </tr>
+	
+	
+</table>

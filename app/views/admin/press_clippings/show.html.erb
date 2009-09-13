@@ -1,0 +1,15 @@
+<h1>Showing <%= @press_clipping.title %></h1>
+
+<p>Title: <%= @press_clipping.title %></p>
+
+<p>Teaser: <%= @press_clipping.teaser %></p>
+
+<p>Content: <%= @press_clipping.content %></p>
+
+<p>URL: <%= @press_clipping.url %></p>
+
+<p>Cover Image: <%= image_tag @press_clipping.cover(:medium) %></p>
+
+<p>PDF: <%= link_to @press_clipping.pdf.url if @press_clipping.pdf %></p>
+
+<%= link_to "Back", collection_url %>
