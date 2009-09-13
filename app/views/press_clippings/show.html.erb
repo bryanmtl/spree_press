@@ -1,10 +1,4 @@
-<% content_for :sidebar_left do %>
-	<%= render :partial => "shared/bands_sidebar",  :locals => { :products => @products, :taxon => @taxon } %>
-<% end %>
 
-<% content_for :page_title do %>
-	@press_clipping.title
-<% end %>
 <% cache @press_clipping do %>
 	<p>
 		<%= @press_clipping.title %><br /><br />
@@ -25,18 +19,5 @@
 	<p><%= link_to "Back to list", collection_url %></p>
 <% end %>
 
-<% content_for :sidebar_right do %>
-	<div id="press_contact">
-		Please contact
-		<a href="#">
-			bobbie@bighassle.com
-		</a>
-	</div>
 
-	<a href="/downloads/high-res.zip">
-		<img src="/images/site/download_high_rez.png" />
-	</a>
-	<%= render :partial => 'shared/dynamic_sidebars' %>
-	
-<% end %>
 
